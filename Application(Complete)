@@ -1,0 +1,103 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ToDoItemTracker
+{
+    class Program
+    {
+
+        static void Menu()
+        {
+
+            //Welcome Message
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("WELCOME");
+            Console.WriteLine("-This application will allow you to track different tasks you have scheduled for today");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("Press enter to load the menu");
+            Console.ReadKey();
+
+
+            //Displays Menu
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("Option 1 - Enter Todays Tasks");
+            Console.WriteLine("Option 2 - View All Todays Tasks");
+            Console.WriteLine("Option 3 - View Next Up-Coming Task");
+            Console.WriteLine("Option 4 - Help Section");
+            Console.WriteLine("Option 5 - Exit Application");
+            Console.WriteLine("");
+            Console.WriteLine("Please Enter a Number between 1 and 5");
+            Console.WriteLine("");
+
+            //Using Global Variables and allocating a value from user input
+            Globals.inputOption = Console.ReadLine();
+
+            //converting the string input to an int
+            try
+            {
+                Globals.optionInput = Convert.ToInt16(Globals.inputOption);
+            }
+            catch
+            {
+                //in case of invalid input the user will be informed and the menu will rerun
+                Console.WriteLine("");
+                Console.WriteLine("Invalid Input");
+                Console.WriteLine("");
+                Menu();
+            }
+
+
+            //this void will direct the user to their desired option or inform them of miss input
+            switch (Globals.optionInput)
+            {
+                case 1:
+                    Console.WriteLine("");
+                    Console.WriteLine("Option 1 Selected");
+                    Console.WriteLine("");
+                    break;
+                case 2:
+                    Console.WriteLine("");
+                    Console.WriteLine("Option 2 Selected");
+                    Console.WriteLine("");
+                    break;
+                case 3:
+                    Console.WriteLine("");
+                    Console.WriteLine("Option 3 Selected");
+                    Console.WriteLine("");
+                    break;
+                case 4:
+                    Console.WriteLine("");
+                    Console.WriteLine("Option 4 Selected");
+                    Console.WriteLine("");
+                    break;
+                case 5:
+                    Console.WriteLine("");
+                    Console.WriteLine("Option 5 Selected");
+                    Console.WriteLine("");
+                    break;
+                default:
+                    Console.WriteLine("");
+                    Console.WriteLine("Invalid Input");
+                    Console.WriteLine("");
+                    Menu();
+                    break;
+            }
+
+            
+
+        }
+        
+        static void Main(string[] args)
+        {
+
+            Menu();
+
+        }
+    }
+}
