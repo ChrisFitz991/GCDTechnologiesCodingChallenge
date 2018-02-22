@@ -1,0 +1,24 @@
+        static void Menu()
+        {
+            //Welcome Message
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("WELCOME");
+            Console.WriteLine("-This application will allow you to track different tasks you have scheduled for today");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("Press enter to load the menu");
+            Console.ReadKey();
+
+
+            //Displays Menu
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("Option 1 - Enter Todays Tasks");
+            Console.WriteLine("Option 2 - View All Todays Tasks");
+            Console.WriteLine("Option 3 - View Next Up-Coming Task");
+            Console.WriteLine("Option 4 - Help Section");
+            Console.WriteLine("Option 5 - Exit Application");
+            Console.WriteLine("");
+
+        }
