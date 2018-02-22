@@ -1,22 +1,35 @@
-            //this void will direct the user to their desired option or inform them of miss input
-            switch(menuInput)
+    //this void will direct the user to their desired option or inform them of miss input
+            switch (Globals.optionInput)
             {
                 case 1:
+                    Console.WriteLine("");
                     Console.WriteLine("Option 1 Selected");
+                    Console.WriteLine("");
                     break;
                 case 2:
+                    Console.WriteLine("");
                     Console.WriteLine("Option 2 Selected");
+                    Console.WriteLine("");
                     break;
                 case 3:
+                    Console.WriteLine("");
                     Console.WriteLine("Option 3 Selected");
+                    Console.WriteLine("");
                     break;
                 case 4:
+                    Console.WriteLine("");
                     Console.WriteLine("Option 4 Selected");
+                    Console.WriteLine("");
                     break;
                 case 5:
+                    Console.WriteLine("");
                     Console.WriteLine("Option 5 Selected");
+                    Console.WriteLine("");
                     break;
                 default:
-                    Console.WriteLine("Please Enter a Number between 1 and 5");
+                    Console.WriteLine("");
+                    Console.WriteLine("Invalid Input");
+                    Console.WriteLine("");
+                    Menu();
                     break;
             }
