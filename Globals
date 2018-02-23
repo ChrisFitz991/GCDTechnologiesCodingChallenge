@@ -8,9 +8,15 @@ namespace ToDoItemTracker
 {
     class Globals
     {
+        //string variables
+        public static string inputOption, counterString, taskName, taskStatus, statusByUser;
 
-        public static string inputOption;
-        public static int optionInput;
+        //int variables
+        public static int optionInput, counter, i;
+
+        //arrays
+        public static string[] tasks;
+        public static string[] taskStatusArray;
 
     }
 }
