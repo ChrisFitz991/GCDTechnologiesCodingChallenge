@@ -1,0 +1,27 @@
+//Option 2
+        static void Option2()
+        {
+
+            Console.WriteLine("");
+            Globals.i = 0;
+            
+            while (Globals.i < Globals.counter)
+            {
+
+                //displays the information stored in the arrays for the user
+                Console.WriteLine("Task " + Globals.i +":");
+                Console.WriteLine(Globals.tasks[Globals.i]);
+                Console.WriteLine("");
+                Console.WriteLine("Task Status");
+                Console.WriteLine(Globals.taskStatusArray[Globals.i]);
+                Console.ReadKey();
+
+                Globals.i++;
+            }
+
+            Console.WriteLine("");
+            Console.WriteLine("Returning to Menu");
+            Console.WriteLine("");
+            MenuLoaded();
+
+        }
