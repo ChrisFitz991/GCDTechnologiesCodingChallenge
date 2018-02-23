@@ -1,0 +1,50 @@
+static void Option1()
+        {
+
+            //determining how many tasks need to be entered into the program. determining the array size.
+            Console.WriteLine("How many Tasks have you to complete today?");
+            try
+            {
+                Globals.counterString = Console.ReadLine();
+                Globals.counter = Convert.ToInt32(Globals.counterString);
+            }
+            catch
+            {
+                Error();
+                Option1();
+            }
+
+            Globals.i = 0;
+
+            while (Globals.i < Globals.counter)
+            {
+
+                //sets array size based on number of tasks the user needs to complete
+                Globals.tasks = new string[Globals.counter];
+                Globals.taskStatusArray = new string[Globals.counter];
+
+                //allows the user to add details to the array
+                Console.WriteLine("");
+                Console.WriteLine("Please Enter Task to be Completed");
+                Console.WriteLine("");
+                Globals.taskName = Console.ReadLine();
+                Console.WriteLine("");
+                Globals.taskStatus = "Incomplete";
+                //as no task will be complete yet the program sets all tasks to incomplete
+                
+                //adds the information into the array
+                Globals.tasks[Globals.i] = Globals.taskName;
+                Globals.taskStatusArray[Globals.i] = Globals.taskStatus;
+
+                //incriments loop counter
+                Globals.i++;
+
+            }
+
+            //informs the user the application is returning to the menu
+            Console.WriteLine("");
+            Console.WriteLine("Returning to Menu");
+            Console.WriteLine("");
+            MenuLoaded();
+
+        }
