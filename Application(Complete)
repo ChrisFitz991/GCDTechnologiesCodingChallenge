@@ -21,14 +21,16 @@ namespace ToDoItemTracker
             Console.WriteLine("");
             Console.WriteLine("Press enter to load the menu");
             Console.ReadKey();
+            MenuLoaded();
 
+        }
 
+        static void MenuLoaded()
+        { 
             //Displays Menu
-            Console.WriteLine("");
-            Console.WriteLine("");
             Console.WriteLine("Option 1 - Enter Todays Tasks");
             Console.WriteLine("Option 2 - View All Todays Tasks");
-            Console.WriteLine("Option 3 - View Next Up-Coming Task");
+            Console.WriteLine("Option 3 - Update Task Information");
             Console.WriteLine("Option 4 - Help Section");
             Console.WriteLine("Option 5 - Exit Application");
             Console.WriteLine("");
@@ -41,7 +43,7 @@ namespace ToDoItemTracker
             //converting the string input to an int
             try
             {
-                Globals.optionInput = Convert.ToInt16(Globals.inputOption);
+                Globals.optionInput = Convert.ToInt32(Globals.inputOption);
             }
             catch
             {
@@ -49,7 +51,7 @@ namespace ToDoItemTracker
                 Console.WriteLine("");
                 Console.WriteLine("Invalid Input");
                 Console.WriteLine("");
-                Menu();
+                MenuLoaded();
             }
 
 
@@ -60,39 +62,203 @@ namespace ToDoItemTracker
                     Console.WriteLine("");
                     Console.WriteLine("Option 1 Selected");
                     Console.WriteLine("");
+                    Option1();
                     break;
                 case 2:
                     Console.WriteLine("");
                     Console.WriteLine("Option 2 Selected");
                     Console.WriteLine("");
+                    Option2();
                     break;
                 case 3:
                     Console.WriteLine("");
                     Console.WriteLine("Option 3 Selected");
                     Console.WriteLine("");
+                    Option3();
                     break;
                 case 4:
                     Console.WriteLine("");
                     Console.WriteLine("Option 4 Selected");
                     Console.WriteLine("");
+                    Option4();
                     break;
                 case 5:
                     Console.WriteLine("");
                     Console.WriteLine("Option 5 Selected");
                     Console.WriteLine("");
+                    Option5();
                     break;
                 default:
                     Console.WriteLine("");
                     Console.WriteLine("Invalid Input");
                     Console.WriteLine("");
-                    Menu();
+                    MenuLoaded();
                     break;
             }
 
             
 
         }
+
+        static void Error()
+        {
+
+            //sub routine to display an error message for the user. This makes development quicker as you dont have to repeat
+            //the same line of code multiple times.
+            Console.WriteLine("Invalid Input, Please Ensure your input is correct and follows onscreen instructions");
+        }
+
+        //Option 1
+        static void Option1()
+        {
+
+            //determining how many tasks need to be entered into the program. determining the array size.
+            Console.WriteLine("How many Tasks have you to complete today?");
+            try
+            {
+                Globals.counterString = Console.ReadLine();
+                Globals.counter = Convert.ToInt32(Globals.counterString);
+            }
+            catch
+            {
+                Error();
+                Option1();
+            }
+
+            Globals.i = 0;
+
+            while (Globals.i < Globals.counter)
+            {
+
+                //sets array size based on number of tasks the user needs to complete
+                Globals.tasks = new string[Globals.counter];
+                Globals.taskStatusArray = new string[Globals.counter];
+
+                //allows the user to add details to the array
+                Console.WriteLine("");
+                Console.WriteLine("Please Enter Task to be Completed");
+                Console.WriteLine("");
+                Globals.taskName = Console.ReadLine();
+                Console.WriteLine("");
+                Globals.taskStatus = "Incomplete";
+                //as no task will be complete yet the program sets all tasks to incomplete
+                
+                //adds the information into the array
+                Globals.tasks[Globals.i] = Globals.taskName;
+                Globals.taskStatusArray[Globals.i] = Globals.taskStatus;
+
+                //incriments loop counter
+                Globals.i++;
+
+            }
+
+            //informs the user the application is returning to the menu
+            Console.WriteLine("");
+            Console.WriteLine("Returning to Menu");
+            Console.WriteLine("");
+            MenuLoaded();
+
+        }
+
+        //Option 2
+        static void Option2()
+        {
+
+            Console.WriteLine("");
+            Globals.i = 0;
+            
+            while (Globals.i < Globals.counter)
+            {
+
+                //displays the information stored in the arrays for the user
+                Console.WriteLine("Task " + Globals.i +":");
+                Console.WriteLine(Globals.tasks[Globals.i]);
+                Console.WriteLine("");
+                Console.WriteLine("Task Status");
+                Console.WriteLine(Globals.taskStatusArray[Globals.i]);
+                Console.ReadKey();
+
+                Globals.i++;
+            }
+
+            Console.WriteLine("");
+            Console.WriteLine("Returning to Menu");
+            Console.WriteLine("");
+            MenuLoaded();
+
+        }
         
+        //Option 3
+        static void Option3()
+        {
+
+            Console.WriteLine("");
+            Globals.i = 0;
+
+            while (Globals.i < Globals.counter)
+            {
+
+                //displays the information stored in the arrays for the user
+                Console.WriteLine("Task " + Globals.i + ":");
+                Console.WriteLine(Globals.tasks[Globals.i]);
+                Console.WriteLine("");
+                Console.WriteLine("Task Status:");
+                Console.WriteLine(Globals.taskStatusArray[Globals.i]);
+                Console.WriteLine("");
+                Console.WriteLine("Has this task been completed?");
+                Console.WriteLine("Please Enter Y for Yes or N for No (Please Note The application is Case Sensitive)");
+                Globals.statusByUser = Console.ReadLine();
+
+                //if statement to set the status of the task to complete or incomplete
+                if (Globals.statusByUser == "Y")
+                {
+                    Globals.taskStatusArray[Globals.i] = "Complete";
+                }
+                else
+                {
+                    Globals.taskStatusArray[Globals.i] = "Incomplete";
+                }
+
+                Globals.i++;
+            }
+
+            MenuLoaded();
+
+        }
+
+        static void Option4()
+        {
+
+            //Displays a help list for the user explaining how to use the applicaiton
+            Console.WriteLine("");
+            Console.WriteLine("Welcome to the Help Section");
+            Console.WriteLine("");
+            Console.WriteLine("Each time you run an option the application will complete this option then return to the menu");
+            Console.WriteLine("to allow the user to select a new option");
+            Console.WriteLine("All options are case sensitive and require to be entered as instructed");
+            Console.WriteLine("-For the menu a single digit number must be entered");
+            Console.WriteLine("-For Y/N answers they must be uppercase");
+            Console.WriteLine("");
+            Console.WriteLine("Hope You Enjoy Using My Application");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("");
+            Console.WriteLine("Press Enter To Continue");
+            MenuLoaded();
+
+        }
+
+        static void Option5()
+        {
+
+            Console.WriteLine("");
+            Console.WriteLine("Application Terminated");
+            Console.WriteLine("Press Enter to Close");
+            Console.ReadKey();
+            Environment.Exit(0);
+
+        }
+
         static void Main(string[] args)
         {
 
